@@ -1,20 +1,21 @@
 #pragma once
 
 #include <Fight.h>
+#include <cstddef>
+#include <vector>
+#include <ctime>
+#include <random>
 
 // Number of card groups
-#ifndef Number_Of_Card_Groups
-#define Number_Of_Card_Groups
-extern long long Number_Of_Card_Groups;
-
-extern long long Desktop_Grid() {
-    return Number_Of_Card_Groups;
-}
-#endif 
+#ifndef NUMBER_OF_CARD_GROUPS_H
+#define NUMBER_OF_CARD_GROUPS_H
+extern long long Desktop_Grid;
+extern long long Number_Of_Card_Groups();
+#endif // NUMBER_OF_CARD_GROUPS_H
 
 // Direction values
-#ifndef Direction_Value
-#define Direction_Value
+#ifndef Direction_Value_H
+#define Direction_Value_H
 
 extern short CardLevel;
 extern long long East;
@@ -28,15 +29,12 @@ extern long long Northeast;
 extern long long Top;
 extern long long Back;
 extern long long Other_Directions;
-
-extern long long Direction_Value() {
-    return East + South + West + North + Southeast + Southwest + Northwest + Northeast + Back + Top + Other_directions;
-}
+extern long long Direction_Value();
 #endif 
 
 // Card attributes
-#ifndef Card_attribute
-#define Card_attribute
+#ifndef Card_attribute_H
+#define Card_attribute_H
 
 extern char Card_Name;
 extern char Card_Background_Story;
@@ -47,36 +45,48 @@ extern short Card_Users;
 extern char Card_Proprietor;
 extern short Card_Precedence;
 extern short Card_Limit;
-extern bool Card_Removal;
-extern bool Card_Skin;
+extern int Card_Removal;
+extern short Card_Skin;
+extern bool Card_Wish;
 
 #endif
 
-#ifndef Draw_Cards
-#define Draw_Cards
+#ifndef Draw_Cards_H
+#define Draw_Cards_H
 
+extern std::vector<long long> Card_Groups_Stuff();
 extern short Run_Card_Identification;
-extern short Run_Card_Groups[Number_Of_Card_Groups];
-extern short Hand_Area() {
-    return Desktop_Grid() /4;
-};
+extern short* Run_Card_Groups = NULL;
+extern bool Card_Player_Skill_Ready;
+extern short Hand_Area_Maximum;
+extern std::vector<short> Hand_Area;
 
 #endif
 
-#ifndef CardPrecedence
-#define CardPrecedence
+#ifndef Card_Precedence_H
+#define Card_Precedence_H
 
 
 
 #endif
 
-#ifndef Card_Fight
-#define Card_Fight
+#ifndef Card_Fight_H
+#define Card_Fight_H
 
+extern int Random_Draw_Card();
 extern long long Remaining_Grid_Occupancy;
 extern long long Grid_Occupation() {
-    return Desktop_Grid() - Remaining_Grid_Occupancy;
+    return Desktop_Grid - Remaining_Grid_Occupancy;
 }
-extern bool Draw_Cards_Skill
+extern bool Draw_Cards_Skill;
+extern short Player_Selected_Identification;
+#endif
+
+#ifndef Card_Skill_H
+#define Card_Skill_H
+
+extern bool Card_Skill_Visibility;
+extern short Card_Skill_Type;
+extern short Card_Normal_Skill_Identification;
 
 #endif

@@ -4,7 +4,7 @@
 
 
 float Health_Point_Percentage() {
-	return Health_Point/;
+	return Health_Point/ Health_Point_Limit;
 }
 
 if (true)
